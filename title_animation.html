@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>title_animation</title>
+  <style>
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Fjalla One', sans-serif;
+      background: linear-gradient(to bottom, #163d51 0%, #656f6f 100%);
+      padding-top: 100px;
+    }
+
+    div {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+
+    h1 {
+      font-size: 62px;
+      text-transform: uppercase;
+      letter-spacing: 5px;
+      color: #e55643;
+      transform: rotate(-10deg);
+      display: flex;
+      --delay: 0;
+    }
+
+    @keyframes move {
+      from {
+        opacity: 0;
+        transform: skew(-10deg) translateY(300%);
+      }
+
+      to {
+        opacity: 1;
+        transform: skew(-10deg);
+      }
+    }
+
+    h1 div {
+      opacity: 0;
+      animation: move 1s cubic-bezier(0.49, -0.08, 0.57, 1.39) forwards;
+      animation-delay: var(--delay);
+      transform: skew(-10deg);
+      text-shadow: 1px 1px #533d4a, 2px 2px #533d4a, 3px 3px #533d4a, 4px 4px #533d4a, 5px 5px #533d4a, 6px 6px #533d4a;
+    }
+
+    h1:nth-child(2) {
+      color: #2b9f5e;
+    }
+
+    h1:nth-child(3) {
+      color: #f1c83c;
+      ;
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+    <h1>THIS IS</h1>
+    <h1>A LONG</h1>
+    <h1>LONG TITLE</h1>
+    <script>
+      document.querySelectorAll('h1').forEach(title => {
+        title.innerHTML = title.textContent.split('').map(c =>
+          `<div class='letters'>${c.trim() ? c : '&nbsp;'}</div>`).join('')
+      })
+      const letters = document.querySelectorAll('.letters')
+      for (let i = 0; i < letters.length; i++) {
+        letters[i].style.setProperty('--delay', `${i * 0.1}s`)
+      }
+    </script>
+  </div>
+</body>
+
+</html>
