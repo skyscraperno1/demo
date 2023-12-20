@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>card_hover</title>
+</head>
+<style>
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    background-color: rgb(13, 17, 23);
+  }
+
+  .card {
+    background-color: rgb(22, 27, 34);
+    width: 400px;
+    height: 580px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 12px;
+    transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+    margin: 10vh auto;
+    transform: perspective(500px) rotateX(var(--rx, 0.03deg)) rotateY(var(--ry, 0.03deg));
+    border: 1px solid #32363d;
+    overflow: hidden;
+    position: relative;
+    z-index: 100;
+    color: rgb(255, 255, 255);
+    padding: 20px;
+  }
+
+  .card-shine {
+    position: absolute;
+    width: 650px;
+    height: 650px;
+    background-color: #3fb950;
+    filter: blur(180px);
+    border-radius: 300px;
+    opacity: 0;
+    transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+    mix-blend-mode: soft-light;
+    will-change: transform;
+    pointer-events: none;
+  }
+
+  .card:hover .card-shine {
+    opacity: .85;
+  }
+
+  p {
+    height: 50%;
+  }
+
+  .card img {
+    border-radius: inherit;
+    width: 200px;
+    height: 290px;
+  }
+</style>
+
+<body>
+  <div class="card">
+    <p>This is the content</p>
+    <img src="./wallpaper/card.png" alt="">
+    <div class="card-shine"></div>
+  </div>
+  <script>
+    const card = document.querySelector('.card')
+    const circle = document.querySelector('.card-shine')
+    const yRange = [-3, 3]
+    const xRange = [-3, 3]
+    const getRotate = (range, value, max) => {
+      return value / max * (range[1] - range[0]) + range[0]
+    }
+    card.onmousemove = e => {
+      const {
+        clientX,
+        clientY
+      } = e;
+      const {
+        offsetWidth,
+        offsetHeight,
+        offsetLeft,
+        offsetTop
+      } = card;
+      const ry = -getRotate(yRange, clientX - offsetLeft, offsetWidth)
+      const rx = getRotate(xRange, clientY - offsetTop, offsetHeight)
+      card.style.setProperty('--rx', `${rx}deg`)
+      card.style.setProperty('--ry', `${ry}deg`)
+      const shineX = clientX - offsetLeft - (circle.offsetWidth / 2);
+      const shineY = clientY - offsetTop - (circle.offsetHeight / 2);
+      circle.style.setProperty('left', `${shineX}px`)
+      circle.style.setProperty('top', `${shineY}px`)
+    }
+    card.onmouseleave = e => {
+      card.style.setProperty('--rx', `0.03deg`)
+      card.style.setProperty('--ry', `0.03deg`)
+    }
+  </script>
+</body>
+
+</html>
