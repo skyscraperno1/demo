@@ -16,8 +16,8 @@
 
   .card {
     background-color: rgb(22, 27, 34);
-    width: 400px;
-    height: 580px;
+    width: 600px;
+    height: 600px;
     display: flex;
     flex-direction: column;
     border-radius: 12px;
@@ -75,6 +75,9 @@
     const getRotate = (range, value, max) => {
       return value / max * (range[1] - range[0]) + range[0]
     }
+    const getPosition = (value, max) => {
+      return value - max / 2
+    }
     card.onmousemove = e => {
       const {
         clientX,
@@ -86,12 +89,14 @@
         offsetLeft,
         offsetTop
       } = card;
-      const ry = -getRotate(yRange, clientX - offsetLeft, offsetWidth)
-      const rx = getRotate(xRange, clientY - offsetTop, offsetHeight)
+      const moveX = clientX - offsetLeft;
+      const moveY = clientY - offsetTop;
+      const ry = -getRotate(yRange, moveX, offsetWidth)
+      const rx = getRotate(xRange, moveY, offsetHeight)
       card.style.setProperty('--rx', `${rx}deg`)
       card.style.setProperty('--ry', `${ry}deg`)
-      const shineX = clientX - offsetLeft - (circle.offsetWidth / 2);
-      const shineY = clientY - offsetTop - (circle.offsetHeight / 2);
+      const shineX = getPosition(moveX, offsetWidth);
+      const shineY = getPosition(moveY, offsetHeight);
       circle.style.setProperty('left', `${shineX}px`)
       circle.style.setProperty('top', `${shineY}px`)
     }
