@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>滑动阻尼</title>
+    <style>
+        * {
+            font-size: 2vmin;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            background-color: #171717;
+        }
+
+        img {
+            width: 40rem;
+            margin-bottom: 5rem;
+            pointer-events: none;
+            user-select: none;
+        }
+
+        .scrollbox {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            flex-shrink: 0;
+            transition: 0.15s ease;
+        }
+
+        .viewbox {
+            position: fixed;
+            top: 0;
+            display: flex;
+            align-items: flex-start;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="viewbox">
+        <div class="scrollbox">
+            <img src="wallpaper/1.png" alt="">
+            <img src="wallpaper/2.png" alt="">
+            <img src="wallpaper/3.png" alt="">
+            <img src="wallpaper/4.png" alt="">
+            <img src="wallpaper/5.png" alt="">
+        </div>
+    </div>
+</body>
+<script>
+    let scrollbox = document.getElementsByClassName("scrollbox")[0];
+    function resize_body() {
+        let height = scrollbox.offsetHeight;
+        document.body.style.height = `${height}px`;
+    };
+    function scroll() {
+         scrollbox.style.transform = `translateY(${-scrollY}px)`;
+    };
+    window.addEventListener("scroll", scroll);
+    window.addEventListener("load", resize_body);
+    window.addEventListener("resize", resize_body);
+</script>
+
+</html>
