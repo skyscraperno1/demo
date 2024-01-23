@@ -15,7 +15,6 @@
   }
 
   .card {
-    background-color: #32363d;
     width: 600px;
     height: 600px;
     display: flex;
@@ -30,6 +29,7 @@
     color: rgb(255, 255, 255);
     padding: 20px;
   }
+
   .card::before {
     position: absolute;
     inset: 0;
@@ -38,8 +38,9 @@
     left: 0;
     content: '';
     z-index: 2;
-    background-color: #32363d;
+    background-color: rgb(48, 54, 61);
   }
+
   .card .inner {
     position: absolute;
     display: inherit;
@@ -48,20 +49,25 @@
     border-radius: inherit;
     background-color: rgb(22, 27, 34);
     z-index: 3;
+    padding: 4px;
   }
 
   .card-shine {
     position: absolute;
-    width: 650px;
+    width: 600px;
     height: 650px;
     background-color: #3fb950;
     filter: blur(180px);
     border-radius: 300px;
-    opacity: 0;
+    opacity: 1;
     transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1);
     mix-blend-mode: soft-light;
     will-change: transform;
     pointer-events: none;
+  }
+
+  .hidden {
+    opacity: 0;
   }
 
   .card:hover .card-shine {
@@ -83,15 +89,15 @@
   <div class="card">
     <div class="inner">
       <p>This is the content</p>
-    <img src="./wallpaper/card.png" alt="">
-    <div class="card-shine"></div>
+      <img src="./wallpaper/card.png" alt="">
+      <div class="card-shine hidden"></div>
     </div>
   </div>
   <script>
     const card = document.querySelector('.card')
     const circle = document.querySelector('.card-shine')
-    const yRange = [-2, 2]
-    const xRange = [-2, 2]
+    const yRange = [-1, 1]
+    const xRange = [-1, 1]
     const getRotate = (range, value, max) => {
       return value / max * (range[1] - range[0]) + range[0]
     }
@@ -99,6 +105,7 @@
       return value - max / 2
     }
     card.onmousemove = e => {
+      circle.classList.remove('hidden')
       const {
         clientX,
         clientY
@@ -123,6 +130,7 @@
     card.onmouseleave = e => {
       card.style.setProperty('--rx', `0.03deg`)
       card.style.setProperty('--ry', `0.03deg`)
+      circle.classList.add('hidden')
     }
   </script>
 </body>
