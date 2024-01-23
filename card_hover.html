@@ -15,7 +15,7 @@
   }
 
   .card {
-    background-color: rgb(22, 27, 34);
+    background-color: #32363d;
     width: 600px;
     height: 600px;
     display: flex;
@@ -24,12 +24,30 @@
     transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
     margin: 10vh auto;
     transform: perspective(500px) rotateX(var(--rx, 0.03deg)) rotateY(var(--ry, 0.03deg));
-    border: 1px solid #32363d;
     overflow: hidden;
     position: relative;
     z-index: 100;
     color: rgb(255, 255, 255);
     padding: 20px;
+  }
+  .card::before {
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    top: 0;
+    left: 0;
+    content: '';
+    z-index: 2;
+    background-color: #32363d;
+  }
+  .card .inner {
+    position: absolute;
+    display: inherit;
+    flex-direction: column;
+    inset: 1px;
+    border-radius: inherit;
+    background-color: rgb(22, 27, 34);
+    z-index: 3;
   }
 
   .card-shine {
@@ -63,15 +81,17 @@
 
 <body>
   <div class="card">
-    <p>This is the content</p>
+    <div class="inner">
+      <p>This is the content</p>
     <img src="./wallpaper/card.png" alt="">
     <div class="card-shine"></div>
+    </div>
   </div>
   <script>
     const card = document.querySelector('.card')
     const circle = document.querySelector('.card-shine')
-    const yRange = [-3, 3]
-    const xRange = [-3, 3]
+    const yRange = [-2, 2]
+    const xRange = [-2, 2]
     const getRotate = (range, value, max) => {
       return value / max * (range[1] - range[0]) + range[0]
     }
