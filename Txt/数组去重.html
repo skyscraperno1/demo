@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let arr = [1, 321, 4, 43, 51, 52, 5, 6, 62, 1, 51]
+        // 一、利用ES6 Set去重
+        // arr = new Set(arr)
+
+        // 二、 双重for循环，用splice去重
+        // for(var i=0; i<arr.length; i++){
+        //     for(var j=i+1; j<arr.length; j++){
+        //         if(arr[i]==arr[j]){         //第一个等同于第二个，splice方法删除第二个
+        //             arr.splice(j,1);
+        //             j--;
+        //         }
+        //     }
+        // }
+
+        // 三、indexOf去重，起一个新数组 判断 push
+        // let newArr = []
+        // for(var i=0; i<arr.length; i++){
+        //     if(newArr.indexOf(arr[i] === -1)){
+        //         newArr.push(arr[i])
+        //     }
+        // }
+        // arr = newArr
+        // 四、sort去重 起一个新数组 sort会按照ascLL码排序，只需要前后对比就行
+        // arr = arr.sort()
+        // let newArr = [arr[0]]
+        // for (let i = 1; i < arr.length; i++) {
+        //     if (arr[i] !== arr[i-1]) {
+        //         newArr.push(arr[i]);
+        //     }
+        // }
+        // 五、利用includes 起一个新数组
+        // let newArr = []
+        // for(var i = 0; i < arr.length; i++) {
+        //         if( !newArr.includes( arr[i]) ) {//includes 检测数组是否有某个值
+        //             newArr.push(arr[i]);
+        //         }
+        // }
+
+ 
+        console.log(arr);
+    </script>
+</body>
+
+</html>

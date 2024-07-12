@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>判断数据类型</title>
+</head>
+<body>
+    <script>
+        // 第一种 typeof 
+        console.log(typeof 1);//number
+        console.log(typeof '1');//string
+        console.log(typeof true);//boolean
+        console.log(typeof undefined);//undefined
+        console.log(typeof {});//object
+        console.log(typeof null);//object
+        console.log(typeof Symbol());//symbol
+        console.log(typeof []);//object
+        console.log(typeof new Date());//object
+        console.log(typeof new RegExp());//object
+        console.log(typeof new Error());//object
+        console.log(typeof NaN);//number
+    </script>
+    <script>
+        //第二种 instanceof
+        console.log([] instanceof Array)//true
+        console.log([] instanceof Object)//true 所以还是无法判断
+        console.log({} instanceof Object)//true
+        console.log((()=>{}) instanceof Function)//true
+    </script>
+    <script>
+        // 第三种 constructor 
+        //每个构造函数都会有一个prototype属性，即为构造函数的原型对象，而原型对象中会有一个constructor属性指回到构造函数。
+        //当利用构造函数创建新对象时，原型上的constructor属性也会被遗传到新创建的对象上，从原型链的角度讲，构造函数也代表了对象的类型。
+        console.log(new Number(1).constructor === Number)
+        console.log(new String(1).constructor == String);//true
+        console.log(true.constructor == Boolean);//true
+        console.log(new Object().constructor == Object);//true
+        console.log(new Error().constructor == Error);//true
+    </script>
+    <script>
+        // 第四种 Object.prototype.toString.call()
+        console.log(Object.prototype.toString({}));
+        console.log(Object.prototype.toString.call(''));//[object String]
+        console.log(Object.prototype.toString.call(1));//[object Number]
+        console.log(Object.prototype.toString.call(true));//[object Boolean]
+        console.log(Object.prototype.toString.call(undefined));//[object Undefined]
+        console.log(Object.prototype.toString.call(null));//[object Null]
+        console.log(Object.prototype.toString.call(Symbol()));//[object Symbol]
+        console.log(Object.prototype.toString.call(new Error()));//[object Error]
+    </script>
+</body>
+</html>

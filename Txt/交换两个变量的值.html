@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>交换两个变量的值</title>
+</head>
+<body>
+    <script>
+        // 1.最low的，定义一个中间变量
+        var a = 123;
+        var b = 456;
+
+        // var t 
+        // t = a 
+        // a = b
+        // b = t
+
+        // 2.使用加减方法来
+        // a += b // a = a + b
+        // b = a-b // b = a- b
+        // a -= b // a = a - b
+
+        // 或者
+        // a -= b;
+        // b = a + b;
+        // a = b - a;
+
+        //3. 起一个对象，然后交换
+        // var c = {a, b}
+        // b = c.a
+        // a = c.b
+
+        // 4.除了对象，还可以起一个数组，然后交换
+        // var c = [a, b]
+        // b = c[0]
+        // a = c[1]
+        
+        // 5.非常牛逼的方式
+        // a = [b, b=a][0]
+        // console.log(a, b); 
+
+        // 6. 利用解构赋值的语法
+        [a,b] = [b,a];
+        console.log(b,a);
+
+    </script>
+</body>
+</html>

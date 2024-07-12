@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 一般伪数组有arguments、querySelectorAll、getElement系列,以及上传文件的file对象
+        function Test() {
+            return arguments
+        }
+        // 利用arguments实现一个伪数组
+        let pseudo = Test(1, 2, 3, 4, 5, 6)
+        
+        //转化方法
+        var realArr = Array.from(pseudo)  //第一种、使用ES6Array.from()
+        var realArr = [...pseudo]  //第二种、使用ES6展开运算符
+        var realArr = Array.prototype.slice.call(pseudo) // 第三种、使用Array原型链上的slice方法并且把原数组call赋值运算
+
+        const slice = Funcion.prototype.call.bind(Array.prototype.slice) //第四种把Array里面的slice直接放到Function原型链上
+        var realArr = slice(pseudo)
+
+       
+
+    </script>
+</body>
+
+</html>

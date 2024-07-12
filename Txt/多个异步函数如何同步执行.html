@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 同步函数
+        (function () {
+            const add = x => x + 5
+            const multiply = x => x * 5
+            const subtraction = x => x - 5
+            const division = x => x / 5
+
+
+            const pipeFunction = (...fns) => {
+
+                return fns.reduce((preFn, curFn) => {
+                    return (num) => {
+                        const res = preFn(num);
+                        return curFn(res)
+                    }
+                })
+            }
+
+
+            const tartgetFn = pipeFunction(
+                add, //10 
+                multiply, // 50
+                subtraction, // 45
+                division // 9
+            )
+
+            console.log(tartgetFn(5));
+        })
+        // 异步函数
+        (function () {
+            const asyncFn = v=> {
+                return new Promise(resolve=>{
+                    setTimeout(()=> {
+                        resolve(v)
+                    },Math.random() * 1000)
+                }) 
+            }
+            const add = async x => asyncFn(x + 5)
+            const multiply = async x => asyncFn(x * 5)
+            const subtraction = async x => asyncFn(x - 5)
+            const division = async x => asyncFn(x / 5)
+             
+
+            const pipeFunction = (...fns) =>{
+                return fns.reduce((preFn, curFn)=>{
+                    return async (num)=>{
+                        const res = await preFn(num)
+                        return curFn(res)
+                    }
+
+                })
+            }
+            const tartgetFn = pipeFunction(
+                add, //10 
+                multiply, // 50
+                subtraction, // 45
+                division // 9
+            )
+
+            await tartgetFn(5) //9
+        })()
+    </script>
+</body>
+
+</html>

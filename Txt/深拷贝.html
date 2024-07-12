@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>深拷贝</title>
+</head>
+
+<body>
+    <script>
+        // 方法一：for in遍历
+        function deepClone(obj) {
+            // 判断拷贝的要进行深拷贝的是数组还是对象，是数组的话进行数组拷贝，对象进行对象拷贝
+            var newObj = Array.isArray(obj) ? [] : {}
+            // 进行深拷贝不能为空，并且是对象或者是数组
+            if (obj && typeof obj === 'object') {
+                if (obj.hasOwnProperty(key)) {
+                    for (key in obj) {
+                        if (obj[key] && typeof obj[key] === 'object') {
+                            newObj[key] = deepClone(obj[key])
+                        } else {
+                            newObj[key] = obj[key]
+                        }
+                    }
+                }
+            }
+            return newObj
+        }
+
+        //方法二 JSON转化
+        function jsonClone(obj) {
+            return JSON.parse(JSON.stringify(obj))
+            //缺点
+            // 1)如果对象有函数，函数无法被拷贝下来，
+            // 2)无法拷贝对象原型链上的属性和方法
+            // 3)当数据的层次很深，会栈溢出
+            // 4)无法拷贝undefined，Symbol
+        }
+
+        // 方法三 jQuery extends方法 但是不常用提到就行
+        function jQueryClone() {
+            var array = [1, 2, 3, 4];
+            var newArray = $.extend(true, [], array);
+        }
+
+        // 浅拷贝
+
+        // 一、 Object.assign()方法
+        // 二、 直接赋值（其实也不算拷贝）
+    </script>
+</body>
+
+</html>
