@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+      body {
+        overflow-x: hidden;
+      }
+      .section {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 100%;
+        min-height: 100vh;
+      }
+
+      .section h1,
+      .section h2 {
+        font-size: 10vw;
+        text-transform: uppercase;
+        margin: 0;
+      }
+
+      .marquee,
+      .marquee-2 {
+        overflow: hidden;
+      }
+
+      .marquee h1,
+      .marquee h2,
+      .marquee-2 h1,
+      .marquee-2 h2 {
+        background-color: white;
+        flex-shrink: 0;
+      }
+
+      .marquee-2 {
+        min-height: 300vh;
+      }
+
+      .marquee-track,
+      .marquee-track-2 {
+        align-items: center;
+        display: flex;
+        justify-content: center;
+      }
+
+      /* Callout */
+      .smooth-scroll-pause {
+        min-height: 75vh;
+      }
+
+      .callout-content {
+        display: flex;
+        max-width: 90vw;
+        padding: 10vw 0;
+        width: 100%;
+      }
+
+      .callout-content img {
+        width: 100%;
+      }
+
+      .callout-content h3 {
+        font-size: 5vw;
+        margin: 20px 0;
+        text-transform: uppercase;
+      }
+
+      .callout-content p {
+        font-size: 5vw;
+        margin: 0;
+      }
+
+      .callout-col {
+        flex: 1;
+      }
+
+      .callout-col:last-child {
+        padding-left: 30px;
+      }
+
+      /* Demo 4 */
+      .horizontal-scroll {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+      }
+
+      .horizontal-panel {
+        display: flex;
+        flex-direction: column;
+        flex-shrink: 0;
+        justify-content: space-between;
+        min-width: 100vw;
+        min-height: 100vh;
+      }
+
+      .horizontal-panel img {
+        margin-top: auto;
+        margin-left: auto;
+        max-width: 60vw;
+        max-height: 60vh;
+        object-fit: contain;
+      }
+
+      .horizontal-panel.a {
+        background-color: aliceblue;
+      }
+
+      .horizontal-panel.b {
+        background-color: aquamarine;
+      }
+
+      .horizontal-panel.c {
+        background-color: antiquewhite;
+      }
+
+      .horizontal-panel.d {
+        background-color: thistle;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="section topper">
+      <h1>ScrollTrigger</h1>
+      <h2>Demo 1</h2>
+    </div>
+    <div class="section marquee">
+      <div class="marquee-track l">
+        <h1>Cool marquee Cool marquee Cool marquee</h1>
+      </div>
+      <div class="marquee-track r">
+        <h1>Cool marquee Cool marquee Cool marquee</h1>
+      </div>
+      <div class="marquee-track l">
+        <h1>Cool marquee Cool marquee Cool marquee</h1>
+      </div>
+      <div class="marquee-track r">
+        <h1>Cool marquee Cool marquee Cool marquee</h1>
+      </div>
+      <div class="marquee-track l">
+        <h1>Cool marquee Cool marquee Cool marquee</h1>
+      </div>
+    </div>
+    <div class="section">
+      <h1>ScrollTrigger</h1>
+      <h2>Demo 2</h2>
+    </div>
+    <div class="section marquee-2">
+      <div class="marquee-track-2 l">
+        <h1>Cool marquee Cool marquee Cool marquee</h1>
+      </div>
+      <div class="marquee-track-2 r">
+        <h1>Cool marquee Cool marquee Cool marquee</h1>
+      </div>
+      <div class="marquee-track-2 l">
+        <h1>Cool marquee Cool marquee Cool marquee</h1>
+      </div>
+      <div class="marquee-track-2 r">
+        <h1>Cool marquee Cool marquee Cool marquee</h1>
+      </div>
+      <div class="marquee-track-2 l">
+        <h1>Cool marquee Cool marquee Cool marquee</h1>
+      </div>
+    </div>
+    <div class="section">
+      <h1>ScrollTrigger</h1>
+      <h2>Demo 3</h2>
+    </div>
+    <div class="section smooth-scroll">
+      <div class="callout">
+        <div class="callout-content">
+          <div class="callout-col">
+            <img src="https://source.unsplash.com/random" alt="random pic" />
+          </div>
+          <div class="callout-col">
+            <h3>This is a headline</h3>
+            <p>
+              This is some text that has nothing to do with the photo or the
+              headline.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="section">
+      <h1>ScrollTrigger</h1>
+      <h2>Demo 4</h2>
+    </div>
+    <div class="section horizontal-scroll">
+      <div class="horizontal-panel a">
+        <h1>Panel 1</h1>
+        <img src="wallpaper/1.png" alt="random pic" />
+      </div>
+      <div class="horizontal-panel b">
+        <h1>Panel 2</h1>
+        <img src="wallpaper/2.png" alt="random pic" />
+      </div>
+      <div class="horizontal-panel c">
+        <h1>Panel 3</h1>
+        <img src="wallpaper/3.png" alt="random pic" />
+      </div>
+      <div class="horizontal-panel d">
+        <h1>Panel 4</h1>
+        <img src="wallpaper/4.png" alt="random pic" />
+      </div>
+    </div>
+    <div class="section horizontal-pin">
+      <div class="horizontal-panel a">
+        <h1>Panel 5</h1>
+        <img src="wallpaper/5.png" alt="random pic" />
+      </div>
+      <div class="horizontal-panel b">
+        <h1>Panel 6</h1>
+        <img src="wallpaper/1.png" alt="random pic" />
+      </div>
+      <div class="horizontal-panel c">
+        <h1>Panel 7</h1>
+        <img src="wallpaper/2.png" alt="random pic" />
+      </div>
+      <div class="horizontal-panel d">
+        <h1>Panel 8</h1>
+        <img src="wallpaper/3.png" alt="random pic" />
+      </div>
+    </div>
+    <div class="section"></div>
+    <div class="section footer">
+      <h1>That’s all ☝🏾</h1>
+    </div>
+  </body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script>
+    // Demo 1
+    gsap.to(".marquee-track.l h1", {
+      scrollTrigger: {
+        trigger: ".marquee-track.l h1",
+        start: "top bottom",
+        end: "400% top",
+        scrub: 0.6,
+      },
+      xPercent: 25,
+      duration: 3,
+      ease: "linear",
+    });
+
+    gsap.to(".marquee-track.r h1", {
+      scrollTrigger: {
+        trigger: ".marquee-track.r h1",
+        end: "bottom top",
+        scrub: 0.6,
+      },
+      xPercent: -25,
+      duration: 3,
+      ease: "linear",
+    });
+
+    // Demo 2
+    gsap.set(".marquee-track-2", {
+      rotation: (index) => Math.PI * (index + 1) * 45,
+      transformOrigin: "center",
+    });
+
+    gsap.to(".marquee-track-2.l h1", {
+      scrollTrigger: {
+        trigger: ".marquee-2",
+        endTrigger: ".marquee-2",
+        scrub: 0.6,
+      },
+      xPercent: 25,
+      duration: 3,
+      ease: "linear",
+    });
+
+    gsap.to(".marquee-track-2.r h1", {
+      scrollTrigger: {
+        trigger: ".marquee-2",
+        endTrigger: ".marquee-2",
+        scrub: 0.6,
+      },
+      xPercent: -25,
+      duration: 3,
+      ease: "linear",
+    });
+
+    // Demo 3
+    gsap.set(".callout-col", { opacity: 0, yPercent: (index) => index * 20 });
+
+    gsap.to(".callout-col", {
+      scrollTrigger: {
+        trigger: ".callout",
+        start: "top bottom",
+        end: "50% 75%",
+        scrub: 0.6,
+      },
+      opacity: 1,
+      duration: 3,
+      stagger: 0.6,
+      ease: "linear",
+    });
+
+    gsap.to(".callout-col", {
+      scrollTrigger: {
+        trigger: ".callout",
+        start: "top bottom",
+        end: "center center",
+        scrub: 0.6,
+      },
+      yPercent: 0,
+      duration: 3,
+      ease: "linear",
+    });
+
+    // Demo 4
+    gsap.registerPlugin(ScrollTrigger);
+    const scroll_panels = gsap.utils.toArray(
+      ".horizontal-scroll .horizontal-panel"
+    );
+    const pin_panels = gsap.utils.toArray(".horizontal-pin .horizontal-panel");
+
+    gsap.to(scroll_panels, {
+      xPercent: -100 * (scroll_panels.length - 1),
+      ease: "none",
+      scrollTrigger: {
+        trigger: ".horizontal-scroll",
+        pin: true,
+        scrub: 0.6,
+        markers: true,
+        end: () =>
+          "+=" +
+          document.querySelector(".horizontal-scroll").offsetWidth *
+            scroll_panels.length,
+      },
+    });
+
+    pin_panels.forEach((panel, i) => {
+      ScrollTrigger.create({
+        trigger: panel,
+        pin: true,
+        pinSpacing: false,
+        start: "top top",
+      });
+    });
+  </script>
+</html>
